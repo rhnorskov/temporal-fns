@@ -1,5 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
 
-export function endOfYear(dirtyDate: Temporal.PlainDate): Temporal.PlainDate {
-  return new Temporal.PlainDate(dirtyDate.year + 1, 1, 1).subtract({ days: 1 });
+export function endOfYear(temporal: Temporal.PlainDate): Temporal.PlainDate {
+  return temporal.with({ month: 12, day: 31 });
 }

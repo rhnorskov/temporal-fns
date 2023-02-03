@@ -1,5 +1,5 @@
 import { Temporal } from "@js-temporal/polyfill";
 
-export function startOfYear(dirtyDate: Temporal.PlainDate): Temporal.PlainDate {
-  return new Temporal.PlainDate(dirtyDate.year, 1, 1);
+export function startOfYear(temporal: Temporal.PlainDate): Temporal.PlainDate {
+  return temporal.with({ month: 1, day: 1 });
 }
