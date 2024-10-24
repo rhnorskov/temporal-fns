@@ -1,5 +1,11 @@
 # temporal-fns
 
+## 1.1.2
+
+### Patch Changes
+
+- e929547: docs: add keywords to package.json
+
 ## 1.1.1
 
 ### Patch Changes
