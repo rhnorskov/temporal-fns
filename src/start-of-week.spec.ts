@@ -1,14 +1,9 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 import { describe, expect, it } from "vitest";
 
-import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
 import { startOfWeek } from "./start-of-week";
 
-setTemporalPolyfill(Temporal);
-
 describe("startOfWeek", () => {
-  const Temporal = getTemporalPolyfill();
-
   it("returns the start of the week (Monday) for a Temporal.PlainDate", () => {
     const date = Temporal.PlainDate.from("2024-02-21");
     const result = startOfWeek(date);

@@ -1,4 +1,4 @@
-import type { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 export function endOfDay<
   T extends

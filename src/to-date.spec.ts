@@ -1,16 +1,11 @@
 process.env.TZ = "UTC";
 
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 import { describe, expect, it } from "vitest";
 
-import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
 import { toDate } from "./to-date";
 
-setTemporalPolyfill(Temporal);
-
 describe("toDate", () => {
-  const Temporal = getTemporalPolyfill();
-
   it("converts Temporal.Instant to a Date object", () => {
     const instant = Temporal.Instant.from("2024-02-21T14:24:24.242Z");
     const result = toDate(instant);

@@ -1,4 +1,3 @@
-export { setTemporalPolyfill } from "./polyfill";
 export * from "./day-of-week";
 export * from "./end-of-day";
 export * from "./end-of-month";

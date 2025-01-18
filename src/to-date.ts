@@ -1,6 +1,4 @@
-import type { Temporal } from "@js-temporal/polyfill";
-
-import { getTemporalPolyfill } from "./polyfill";
+import { Temporal } from "temporal-polyfill";
 
 export function toDate<
   T extends
@@ -9,8 +7,6 @@ export function toDate<
     | Temporal.PlainDateTime
     | Temporal.ZonedDateTime,
 >(temporal: T): Date {
-  const Temporal = getTemporalPolyfill();
-
   if (temporal instanceof Temporal.Instant) {
     return new Date(temporal.epochMilliseconds);
   }

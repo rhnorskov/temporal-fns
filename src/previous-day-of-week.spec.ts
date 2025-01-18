@@ -1,14 +1,9 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 import { describe, expect, it } from "vitest";
 
-import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
 import { previousDayOfWeek } from "./previous-day-of-week";
 
-setTemporalPolyfill(Temporal);
-
 describe("previousDayOfWeek", () => {
-  const Temporal = getTemporalPolyfill();
-
   it("returns the previous Monday given various dates after the same", () => {
     expect(previousDayOfWeek(Temporal.PlainDate.from("2021-06-18"), 1)).toEqual(
       Temporal.PlainDate.from("2021-06-14"),

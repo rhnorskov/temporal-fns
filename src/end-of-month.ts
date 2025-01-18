@@ -1,7 +1,6 @@
-import type { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 import { endOfDay } from "./end-of-day";
-import { getTemporalPolyfill } from "./polyfill";
 
 export interface EndOfMonthOptions {
   preserveTime?: boolean;
@@ -13,7 +12,6 @@ export function endOfMonth<
     | Temporal.PlainDateTime
     | Temporal.ZonedDateTime,
 >(temporal: T, options?: EndOfMonthOptions): T {
-  const Temporal = getTemporalPolyfill();
   const { preserveTime = false } = options ?? {};
   const lastDay = temporal.with({ day: temporal.daysInMonth });
 

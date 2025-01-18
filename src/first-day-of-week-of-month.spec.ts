@@ -1,14 +1,9 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 import { describe, expect, it } from "vitest";
 
 import { firstDayOfWeekOfMonth } from "./first-day-of-week-of-month";
-import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
-
-setTemporalPolyfill(Temporal);
 
 describe("firstDayOfWeekOfMonth", () => {
-  const Temporal = getTemporalPolyfill();
-
   it("returns the first Monday of the month for a Temporal.PlainDate", () => {
     const date = Temporal.PlainDate.from("2024-02-24");
     const result = firstDayOfWeekOfMonth(date, 1);

@@ -1,4 +1,4 @@
-import type { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 import { type DayOfWeek } from "./day-of-week";
 import { endOfMonth } from "./end-of-month";
