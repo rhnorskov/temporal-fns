@@ -1,5 +1,11 @@
 # temporal-fns
 
+## 1.2.0
+
+### Minor Changes
+
+- d38f7a4: feat: allow setting Temporal polyfill and add `toDate` function
+
 ## 1.1.2
 
 ### Patch Changes
