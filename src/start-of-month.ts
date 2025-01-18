@@ -1,5 +1,6 @@
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 
+import { getTemporalPolyfill } from "./polyfill";
 import { startOfDay } from "./start-of-day";
 
 export interface StartOfMonthOptions {
@@ -12,6 +13,8 @@ export function startOfMonth<
     | Temporal.PlainDateTime
     | Temporal.ZonedDateTime,
 >(temporal: T, options?: StartOfMonthOptions): T {
+  const Temporal = getTemporalPolyfill();
+
   const { preserveTime = false } = options ?? {};
 
   const firstDay = temporal.with({ day: 1 });

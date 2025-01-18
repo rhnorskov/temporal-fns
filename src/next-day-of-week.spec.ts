@@ -2,8 +2,13 @@ import { Temporal } from "@js-temporal/polyfill";
 import { describe, expect, it } from "vitest";
 
 import { nextDayOfWeek } from "./next-day-of-week";
+import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
+
+setTemporalPolyfill(Temporal);
 
 describe("nextDayOfWeek", () => {
+  const Temporal = getTemporalPolyfill();
+
   it("returns the following Monday given various dates before the same", () => {
     expect(nextDayOfWeek(Temporal.PlainDate.from("2024-10-20"), 1)).toEqual(
       Temporal.PlainDate.from("2024-10-21"),

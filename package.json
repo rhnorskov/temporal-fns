@@ -41,6 +41,7 @@
     "format": "prettier --write .",
     "lint": "eslint --fix .",
     "release": "changeset publish",
+    "type-check": "tsc --noEmit",
     "test": "vitest"
   },
   "dependencies": {

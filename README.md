@@ -68,7 +68,9 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 
 ```ts
 import { Temporal } from "@js-temporal/polyfill";
-import { startOfWeek } from "temporal-fns";
+import { setTemporalPolyfill, startOfWeek } from "temporal-fns";
+
+setTemporalPolyfill(Temporal);
 
 const date = Temporal.PlainDate.from("2024-02-21"); // A Wednesday
 
@@ -91,7 +93,7 @@ _(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { startOfDay } from "temporal-fns";
 
 const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
@@ -117,7 +119,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { endOfMonth } from "temporal-fns";
 
 const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
@@ -144,7 +146,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { endOfWeek } from "temporal-fns";
 
 const date = Temporal.PlainDate.from("2024-02-21"); // A Wednesday
@@ -168,7 +170,7 @@ _(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { endOfDay } from "temporal-fns";
 
 const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
@@ -193,7 +195,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { nextDayOfWeek } from "temporal-fns";
 
 const date = Temporal.PlainDate.from("2024-02-21");
@@ -218,7 +220,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { previousDayOfWeek } from "temporal-fns";
 
 const date = Temporal.PlainDate.from("2024-02-21");
@@ -243,7 +245,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { firstDayOfWeekOfMonth } from "temporal-fns";
 
 const date = Temporal.PlainDate.from("2024-02-24");
@@ -268,7 +270,7 @@ _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Return
 ### Example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
+import type { Temporal } from "@js-temporal/polyfill";
 import { lastDayOfWeekOfMonth } from "temporal-fns";
 
 const date = Temporal.PlainDate.from("2024-02-24");

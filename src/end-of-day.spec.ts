@@ -2,8 +2,13 @@ import { Temporal } from "@js-temporal/polyfill";
 import { describe, expect, it } from "vitest";
 
 import { endOfDay } from "./end-of-day";
+import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
+
+setTemporalPolyfill(Temporal);
 
 describe("endOfDay", () => {
+  const Temporal = getTemporalPolyfill();
+
   it("sets the time to 23:59:59.999999999 for Temporal.PlainTime", () => {
     const time = Temporal.PlainTime.from("14:24:24.242424242");
     const result = endOfDay(time);

@@ -2,8 +2,13 @@ import { Temporal } from "@js-temporal/polyfill";
 import { describe, expect, it } from "vitest";
 
 import { lastDayOfWeekOfMonth } from "./last-day-of-week-of-month";
+import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
+
+setTemporalPolyfill(Temporal);
 
 describe("lastDayOfWeekOfMonth", () => {
+  const Temporal = getTemporalPolyfill();
+
   it("returns the last Monday of the month for a Temporal.PlainDate", () => {
     const date = Temporal.PlainDate.from("2024-02-24");
     const result = lastDayOfWeekOfMonth(date, 1);

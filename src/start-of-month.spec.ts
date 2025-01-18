@@ -1,9 +1,13 @@
 import { Temporal } from "@js-temporal/polyfill";
 import { describe, expect, it } from "vitest";
 
+import { getTemporalPolyfill, setTemporalPolyfill } from "./polyfill";
 import { startOfMonth } from "./start-of-month";
 
+setTemporalPolyfill(Temporal);
+
 describe("startOfMonth", () => {
+  const Temporal = getTemporalPolyfill();
   it("returns the first day of the month for a Temporal.PlainDate", () => {
     const result = startOfMonth(Temporal.PlainDate.from("2024-02-24"));
 
