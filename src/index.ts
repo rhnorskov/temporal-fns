@@ -9,3 +9,4 @@ export * from "./previous-day-of-week";
 export * from "./start-of-day";
 export * from "./start-of-month";
 export * from "./start-of-week";
+export * from "./to-date";
