@@ -3,6 +3,7 @@ export * from "./end-of-day";
 export * from "./end-of-month";
 export * from "./end-of-week";
 export * from "./first-day-of-week-of-month";
+export * from "./from-date";
 export * from "./last-day-of-week-of-month";
 export * from "./next-day-of-week";
 export * from "./previous-day-of-week";
