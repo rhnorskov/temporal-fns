@@ -1,5 +1,11 @@
 # temporal-fns
 
+## 1.3.1
+
+### Patch Changes
+
+- 9ffb477: feat: add export for to-date utility function
+
 ## 1.3.0
 
 ### Minor Changes
