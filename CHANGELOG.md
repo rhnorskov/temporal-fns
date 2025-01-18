@@ -1,5 +1,11 @@
 # temporal-fns
 
+## 1.3.2
+
+### Patch Changes
+
+- 6b6bb96: feat: add fromDate utility function to convert Date to Temporal.Instant
+
 ## 1.3.1
 
 ### Patch Changes
