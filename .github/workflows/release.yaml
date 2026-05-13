@@ -13,29 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: "latest"
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "lts/*"
+          node-version: "26"
+          registry-url: "https://registry.npmjs.org"
+          cache: "npm"
 
       - name: Install Dependencies
-        run: bun install
+        run: npm ci
 
       - name: Build
-        run: bun run build
+        run: npm run build
 
       - name: Publish to npmjs
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: bun run release
+          publish: npm run release
           commit: "chore: release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

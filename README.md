@@ -2,279 +2,204 @@
 
 A utility library for working with [Temporal](https://tc39.es/proposal-temporal/) dates and times, providing helper functions for common date and time manipulations.
 
-### Installation
+## Installation
 
 ```bash
-bun install temporal-fns
 npm install temporal-fns
-pnpm install temporal-fns
 ```
 
-# Functions
+## Requirements
 
-- [startOfMonth](#startofmonth)
-- [startOfWeek](#startofweek)
-- [startOfDay](#startofday)
-- [endOfMonth](#endofmonth)
-- [endOfWeek](#endofweek)
-- [endOfDay](#endofday)
-- [nextDayOfWeek](#nextdayofweek)
-- [previousDayOfWeek](#previousdayofweek)
-- [firstDayOfWeekOfMonth](#firstdayofweekofmonth)
-- [lastDayOfWeekOfMonth](#lastdayofweekofmonth)
+`temporal-fns` v2+ uses the **native `Temporal` global** and ships **ESM only**.
 
-## `startOfMonth`
+- Node.js **26 or later** (Temporal is enabled by default).
+- Browsers / runtimes that expose the `Temporal` global natively.
 
-Gets the first day of the month for the given `Temporal` object. Optionally, the time can be preserved instead of resetting to the start of the day (`00:00:00.000000000`).
+If you need to run on an older runtime, install and load a polyfill (for example [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill)) before importing this package. Pre-v2 releases bundled a polyfill — v2 leaves that choice to you.
 
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `[options]` _(Object)_: The options object.
-   - `preserveTime` _(boolean)_: Specify whether to preserve the original time. Defaults to `false`.
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the first day of the month.
-
-### Example
+## Quick example
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
-import { startOfMonth } from "temporal-fns";
+import { startOfMonth, addBusinessDays, eachDayOfInterval } from "temporal-fns";
 
-const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
+const today = Temporal.Now.plainDateISO();
 
-startOfMonth(dateTime);
-// => Temporal.PlainDateTime 2024-02-01T00:00:00
-
-startOfMonth(dateTime, { preserveTime: true });
-// => Temporal.PlainDateTime 2024-02-01T14:24:24
+startOfMonth(today);
+addBusinessDays(today, 5);
+eachDayOfInterval({ start: today, end: today.add({ days: 6 }) });
 ```
 
-## `startOfWeek`
+## API
 
-Gets the first day of the week (Monday) for the given `Temporal` object.
+### Period boundaries
 
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the first day of the week (Monday).
-
-### Example
+- `startOfDay` / `endOfDay`
+- `startOfHour` / `endOfHour`
+- `startOfMinute` / `endOfMinute`
+- `startOfSecond` / `endOfSecond`
+- `startOfWeek` / `endOfWeek` — accepts `{ weekStartsOn?, preserveTime? }`. Default is Monday-start (ISO). `endOfWeek` snaps to end-of-day for time-bearing inputs unless `preserveTime: true`.
+- `startOfMonth` / `endOfMonth` — accepts `{ preserveTime }`
+- `startOfQuarter` / `endOfQuarter` — accepts `{ preserveTime }`
+- `startOfYear` / `endOfYear` — accepts `{ preserveTime }`
 
 ```ts
-import { Temporal } from "@js-temporal/polyfill";
-import { setTemporalPolyfill, startOfWeek } from "temporal-fns";
+startOfMonth(Temporal.PlainDateTime.from("2024-02-24T14:24:24"));
+// => 2024-02-01T00:00:00
 
-setTemporalPolyfill(Temporal);
+startOfMonth(Temporal.PlainDateTime.from("2024-02-24T14:24:24"), {
+  preserveTime: true,
+});
+// => 2024-02-01T14:24:24
 
-const date = Temporal.PlainDate.from("2024-02-21"); // A Wednesday
+endOfQuarter(Temporal.PlainDate.from("2024-02-15"));
+// => 2024-03-31
 
-startOfWeek(date);
-// => Temporal.PlainDate 2024-02-19 (Monday)
+endOfWeek(Temporal.PlainDate.from("2024-02-21"), { weekStartsOn: 7 });
+// => 2024-02-24 (Saturday, when the week starts on Sunday)
 ```
 
-## `startOfDay`
+### Day-of-week navigation
 
-Sets the time to the start of the day (`00:00:00.000000000`).
+- `nextDayOfWeek(temporal, dayOfWeek)` / `previousDayOfWeek(temporal, dayOfWeek)`
+- `firstDayOfWeekOfMonth(temporal, dayOfWeek)` / `lastDayOfWeekOfMonth(temporal, dayOfWeek)`
 
-### Arguments
-
-1. `temporal` _(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to modify.
-
-### Returns
-
-_(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object with the time set to the start of the day.
-
-### Example
+The `dayOfWeek` argument uses ISO numbering (1 = Monday, 7 = Sunday).
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { startOfDay } from "temporal-fns";
+nextDayOfWeek(Temporal.PlainDate.from("2024-02-21"), 5);
+// => 2024-02-23 (Friday)
 
-const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
-
-startOfDay(dateTime);
-// => Temporal.PlainDateTime 2024-02-24T00:00:00
+previousDayOfWeek(Temporal.PlainDate.from("2024-02-21"), 1);
+// => 2024-02-19
 ```
 
-## `endOfMonth`
+### Predicates
 
-Gets the last day of the month for the given `Temporal` object. Optionally, the time can be preserved instead of resetting to the end of the day (`23:59:59.999999999`).
-
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `[options]` _(Object)_: The options object.
-   - `preserveTime` _(boolean)_: Specify whether to preserve the original time. Defaults to `false`.
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the last day of the month.
-
-### Example
+- `isWeekend`, `isBusinessDay`
+- `isFirstDayOfMonth`, `isLastDayOfMonth`
+- `isToday`, `isYesterday`, `isTomorrow`
+- `isPast`, `isFuture`
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { endOfMonth } from "temporal-fns";
-
-const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
-
-endOfMonth(dateTime);
-// => Temporal.PlainDateTime 2024-02-29T23:59:59.999999999
-
-endOfMonth(dateTime, { preserveTime: true });
-// => Temporal.PlainDateTime 2024-02-29T14:24:24
+isWeekend(Temporal.PlainDate.from("2024-02-24")); // true (Saturday)
+isToday(Temporal.Now.plainDateISO()); // true
 ```
 
-## `endOfWeek`
+For day-of-week or leap-year checks against a single field, use the built-in getters directly: `t.dayOfWeek === 1`, `t.inLeapYear`.
 
-Gets the last day of the week (Sunday) for the given `Temporal` object.
+### Same-period predicates
 
-### Arguments
+- `isSameDay`, `isSameWeek`, `isSameMonth`, `isSameQuarter`, `isSameYear`
+- `isSameHour`, `isSameMinute`, `isSameSecond`
 
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the last day of the week (Sunday).
-
-### Example
+Both arguments must be the same `Temporal` type. `isSameWeek` accepts `{ weekStartsOn? }` (default Monday).
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { endOfWeek } from "temporal-fns";
-
-const date = Temporal.PlainDate.from("2024-02-21"); // A Wednesday
-
-endOfWeek(date);
-// => Temporal.PlainDate 2024-02-25 (Sunday)
+isSameMonth(
+  Temporal.PlainDate.from("2024-02-01"),
+  Temporal.PlainDate.from("2024-02-29"),
+);
+// => true
 ```
 
-## `endOfDay`
+### Comparison & selection
 
-Sets the time to the end of the day (`23:59:59.999999999`).
-
-### Arguments
-
-1. `temporal` _(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to modify.
-
-### Returns
-
-_(Temporal.PlainTime | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object with the time set to the end of the day.
-
-### Example
+- `compare(a, b)` — returns `-1 | 0 | 1`, picking the right `Temporal.<Type>.compare` for the inputs.
+- `min(values)`, `max(values)` — both throw `RangeError` on empty arrays.
+- `clamp(value, interval)` — same `Interval<T>` shape as elsewhere
+- `closestTo(target, candidates)` — returns `null` for empty arrays.
+- `closestIndexTo(target, candidates)` — returns `-1` for empty arrays.
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { endOfDay } from "temporal-fns";
+min([
+  Temporal.PlainDate.from("2024-02-21"),
+  Temporal.PlainDate.from("2024-02-19"),
+  Temporal.PlainDate.from("2024-02-25"),
+]);
+// => 2024-02-19
 
-const dateTime = Temporal.PlainDateTime.from("2024-02-24T14:24:24");
-
-endOfDay(dateTime);
-// => Temporal.PlainDateTime 2024-02-24T23:59:59.999999999
+clamp(Temporal.PlainDate.from("2024-02-25"), {
+  start: Temporal.PlainDate.from("2024-02-10"),
+  end: Temporal.PlainDate.from("2024-02-20"),
+});
+// => 2024-02-20
 ```
 
-## `nextDayOfWeek`
+### Intervals
 
-Gets the next occurrence of a specific day of the week after the given `Temporal` object.
+An `Interval<T>` is `{ start: T; end: T }` where `T` is any comparable `Temporal` type.
 
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `dayOfWeek` _(1 | 2 | 3 | 4 | 5 | 6 | 7)_: The desired day of the week (1 = Monday, 7 = Sunday).
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the next occurrence of the specified day of the week.
-
-### Example
+- `eachDayOfInterval` / `eachMonthOfInterval` / `eachQuarterOfInterval` / `eachYearOfInterval`. For time-bearing inputs, all of these snap to start-of-period (e.g. `eachDayOfInterval` returns midnight for the first element).
+- `eachWeekOfInterval` — accepts `{ weekStartsOn? }`.
+- `eachHourOfInterval` / `eachMinuteOfInterval` (PlainDateTime / ZonedDateTime)
+- `isWithinInterval(value, interval)` — inclusive on both ends.
+- `areIntervalsOverlapping(a, b, { inclusive? })` — exclusive by default; back-to-back intervals count as overlapping only when `inclusive: true`.
+- `intervalToDuration(interval, options?)` — returns a `Temporal.Duration`. `options` accepts the same shape as Temporal's `.until()` (`largestUnit`, `smallestUnit`, `roundingIncrement`, `roundingMode`).
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { nextDayOfWeek } from "temporal-fns";
+eachDayOfInterval({
+  start: Temporal.PlainDate.from("2024-02-19"),
+  end: Temporal.PlainDate.from("2024-02-22"),
+});
+// => [2024-02-19, 2024-02-20, 2024-02-21, 2024-02-22]
 
-const date = Temporal.PlainDate.from("2024-02-21");
+intervalToDuration({
+  start: Temporal.PlainDateTime.from("2024-01-01T00:00:00"),
+  end: Temporal.PlainDateTime.from("2025-02-15T13:30:45"),
+});
+// => Duration P1Y1M14DT13H30M45S
 
-nextDayOfWeek(date, 5); // Next Friday
-// => Temporal.PlainDate 2024-02-23
+intervalToDuration(
+  {
+    start: Temporal.PlainDate.from("2024-01-01"),
+    end: Temporal.PlainDate.from("2024-03-15"),
+  },
+  { largestUnit: "day" },
+);
+// => Duration P74D
 ```
 
-## `previousDayOfWeek`
+### Business days
 
-Gets the previous occurrence of a specific day of the week before the given `Temporal` object.
+Saturday + Sunday are weekend by default. Pass `{ weekendDays }` (ISO day numbers, 1 = Mon, 7 = Sun) to override — useful for Fri/Sat weekends and similar. No holiday calendar is built in.
 
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `dayOfWeek` _(1 | 2 | 3 | 4 | 5 | 6 | 7)_: The desired day of the week (1 = Monday, 7 = Sunday).
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the previous occurrence of the specified day of the week.
-
-### Example
+- `isBusinessDay(temporal, { weekendDays? })`
+- `addBusinessDays(temporal, amount, { weekendDays? })` / `subBusinessDays(temporal, amount, { weekendDays? })`
+- `differenceInBusinessDays(later, earlier, { weekendDays? })`
 
 ```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { previousDayOfWeek } from "temporal-fns";
+addBusinessDays(Temporal.PlainDate.from("2024-02-23"), 1);
+// => 2024-02-26 (Friday + 1 business day = Monday)
 
-const date = Temporal.PlainDate.from("2024-02-21");
+addBusinessDays(Temporal.PlainDate.from("2024-02-22"), 1, {
+  weekendDays: [5, 6],
+});
+// => 2024-02-25 (Thu + 1 with Fri/Sat as weekend = Sun)
 
-previousDayOfWeek(date, 1); // Previous Monday
-// => Temporal.PlainDate 2024-02-19
+differenceInBusinessDays(
+  Temporal.PlainDate.from("2024-02-26"),
+  Temporal.PlainDate.from("2024-02-19"),
+);
+// => 5
 ```
 
-## `firstDayOfWeekOfMonth`
+### Misc
 
-Gets the first occurrence of a specific day of the week in the month of the given `Temporal` object.
+- `getQuarter(temporal)` — `1 | 2 | 3 | 4`.
+- `fromDate(date)` — converts a JS `Date` to `Temporal.Instant`. Pass a `timeZone` (`fromDate(date, "Europe/Copenhagen")`) to get a `Temporal.ZonedDateTime`. For `PlainDate` or `PlainDateTime`, chain `.toPlainDate()` / `.toPlainDateTime()` on the zoned result so the zone choice is explicit.
+- `toDate(temporal)` — converts an `Instant`, `PlainDate`, `PlainDateTime`, or `ZonedDateTime` back to a JS `Date`. `Instant` and `ZonedDateTime` preserve the absolute instant; `PlainDate` / `PlainDateTime` are built as local-zone `Date`s using their wall-clock fields.
 
-### Arguments
+### Shared type helpers
 
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `dayOfWeek` _(1 | 2 | 3 | 4 | 5 | 6 | 7)_: The desired day of the week (1 = Monday, 7 = Sunday).
+A handful of union types are re-exported so you can build your own helpers on the same primitives:
 
-### Returns
+- `TemporalWithDate` — `PlainDate | PlainDateTime | ZonedDateTime`
+- `TemporalWithTime` — `PlainTime | PlainDateTime | ZonedDateTime`
+- `TemporalWithDateTime` — `PlainDateTime | ZonedDateTime`
+- `TemporalWithYearMonth` — `PlainDate | PlainDateTime | PlainYearMonth | ZonedDateTime`
+- `ComparableTemporal` — every `Temporal` type with a static `compare` (everything except `PlainMonthDay`)
+- `Interval<T extends ComparableTemporal>` — `{ start: T; end: T }`
 
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the first occurrence of the specified day of the week in the month.
+## License
 
-### Example
-
-```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { firstDayOfWeekOfMonth } from "temporal-fns";
-
-const date = Temporal.PlainDate.from("2024-02-24");
-
-firstDayOfWeekOfMonth(date, 1); // First Monday of the month
-// => Temporal.PlainDate 2024-02-05
-```
-
-## `lastDayOfWeekOfMonth`
-
-Gets the last occurrence of a specific day of the week in the month of the given `Temporal` object.
-
-### Arguments
-
-1. `temporal` _(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: The Temporal object to query.
-2. `dayOfWeek` _(1 | 2 | 3 | 4 | 5 | 6 | 7)_: The desired day of the week (1 = Monday, 7 = Sunday).
-
-### Returns
-
-_(Temporal.PlainDate | Temporal.PlainDateTime | Temporal.ZonedDateTime)_: Returns the new Temporal object set to the last occurrence of the specified day of the week in the month.
-
-### Example
-
-```ts
-import type { Temporal } from "@js-temporal/polyfill";
-import { lastDayOfWeekOfMonth } from "temporal-fns";
-
-const date = Temporal.PlainDate.from("2024-02-24");
-
-lastDayOfWeekOfMonth(date, 1); // Last Monday of the month
-// => Temporal.PlainDate 2024-02-26
-```
+MIT

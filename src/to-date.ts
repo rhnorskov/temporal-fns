@@ -1,43 +1,36 @@
-import { Temporal } from "temporal-polyfill";
+/**
+ * Converts a Temporal value to a legacy `Date`.
+ *
+ * `Instant` and `ZonedDateTime` are converted by the absolute instant they
+ * represent. `PlainDate` and `PlainDateTime` are constructed as local-zone
+ * `Date`s using their wall-clock fields.
+ */
+export function toDate(
+	temporal:
+		| Temporal.Instant
+		| Temporal.PlainDate
+		| Temporal.PlainDateTime
+		| Temporal.ZonedDateTime,
+): Date {
+	if (temporal instanceof Temporal.Instant) {
+		return new Date(temporal.epochMilliseconds);
+	}
 
-export function toDate<
-  T extends
-    | Temporal.Instant
-    | Temporal.PlainDate
-    | Temporal.PlainDateTime
-    | Temporal.ZonedDateTime,
->(temporal: T): Date {
-  if (temporal instanceof Temporal.Instant) {
-    return new Date(temporal.epochMilliseconds);
-  }
+	if (temporal instanceof Temporal.ZonedDateTime) {
+		return new Date(temporal.epochMilliseconds);
+	}
 
-  if (temporal instanceof Temporal.PlainDate) {
-    return new Date(temporal.year, temporal.month - 1, temporal.day);
-  }
+	if (temporal instanceof Temporal.PlainDate) {
+		return new Date(temporal.year, temporal.month - 1, temporal.day);
+	}
 
-  if (temporal instanceof Temporal.PlainDateTime) {
-    return new Date(
-      temporal.year,
-      temporal.month - 1,
-      temporal.day,
-      temporal.hour,
-      temporal.minute,
-      temporal.second,
-      temporal.millisecond,
-    );
-  }
-
-  if (temporal instanceof Temporal.ZonedDateTime) {
-    const utc = temporal.withTimeZone("UTC");
-
-    return new Date(
-      utc.year,
-      utc.month - 1,
-      utc.day,
-      utc.hour,
-      utc.minute,
-      utc.second,
-      utc.millisecond,
-    );
-  }
+	return new Date(
+		temporal.year,
+		temporal.month - 1,
+		temporal.day,
+		temporal.hour,
+		temporal.minute,
+		temporal.second,
+		temporal.millisecond,
+	);
 }

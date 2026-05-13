@@ -1,28 +1,35 @@
-import { Temporal } from "temporal-polyfill";
-
 import { startOfDay } from "./start-of-day";
+import type { TemporalWithDate } from "./temporal-types";
 
 export interface StartOfMonthOptions {
-  preserveTime?: boolean;
+	/**
+	 * For time-bearing inputs, when `true` keeps the original wall-clock time
+	 * on the first day of the month. When `false` (default), the time is
+	 * also reset to 00:00:00.
+	 */
+	preserveTime?: boolean;
 }
 
-export function startOfMonth<
-  T extends
-    | Temporal.PlainDate
-    | Temporal.PlainDateTime
-    | Temporal.ZonedDateTime,
->(temporal: T, options?: StartOfMonthOptions): T {
-  const { preserveTime = false } = options ?? {};
+/**
+ * Returns the first day of the month containing `temporal`. For
+ * `PlainDateTime` / `ZonedDateTime`, time is zeroed unless
+ * `{ preserveTime: true }`.
+ */
+export function startOfMonth<T extends TemporalWithDate>(
+	temporal: T,
+	options?: StartOfMonthOptions,
+): T {
+	const { preserveTime = false } = options ?? {};
 
-  const firstDay = temporal.with({ day: 1 });
+	const firstDay = temporal.with({ day: 1 });
 
-  if (firstDay instanceof Temporal.PlainDate) {
-    return firstDay as T;
-  }
+	if (firstDay instanceof Temporal.PlainDate) {
+		return firstDay as T;
+	}
 
-  if (preserveTime) {
-    return firstDay as T;
-  }
+	if (preserveTime) {
+		return firstDay as T;
+	}
 
-  return startOfDay(firstDay) as T;
+	return startOfDay(firstDay) as T;
 }
