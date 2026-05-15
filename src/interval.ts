@@ -1,4 +1,4 @@
-import type { ComparableTemporal } from "./compare";
+import type { ComparableTemporal } from "./compare.ts";
 
 /**
  * A half-or-fully-closed range between two Temporal values of the same type.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fromDate } from "./from-date";
+import { fromDate } from "./from-date.ts";
 
 describe("fromDate", () => {
 	it("returns a Temporal.Instant from a Date", () => {

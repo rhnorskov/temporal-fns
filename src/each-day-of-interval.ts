@@ -1,7 +1,7 @@
-import { compare } from "./compare";
-import type { Interval } from "./interval";
-import { startOfDay } from "./start-of-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
+import { startOfDay } from "./start-of-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns every day in the inclusive interval. For time-bearing types

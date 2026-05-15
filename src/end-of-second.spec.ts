@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { endOfSecond } from "./end-of-second";
+import { endOfSecond } from "./end-of-second.ts";
 
 describe("endOfSecond", () => {
 	it("maxes out sub-second units for Temporal.PlainTime", () => {

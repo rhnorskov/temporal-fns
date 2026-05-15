@@ -1,5 +1,5 @@
-import { closestIndexTo } from "./closest-index-to";
-import type { ComparableTemporal } from "./compare";
+import { closestIndexTo } from "./closest-index-to.ts";
+import type { ComparableTemporal } from "./compare.ts";
 
 /**
  * Returns the candidate whose distance to `target` is smallest, or `null`

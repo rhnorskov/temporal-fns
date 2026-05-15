@@ -1,5 +1,5 @@
-import type { DayOfWeek } from "./day-of-week";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the next occurrence of `dayOfWeek` strictly after `temporal`. If

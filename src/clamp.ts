@@ -1,5 +1,5 @@
-import { type ComparableTemporal, compare } from "./compare";
-import type { Interval } from "./interval";
+import { type ComparableTemporal, compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
 
 /**
  * Constrains `value` to the inclusive `[range.start, range.end]` interval.

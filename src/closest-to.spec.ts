@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { closestIndexTo } from "./closest-index-to";
-import { closestTo } from "./closest-to";
+import { closestIndexTo } from "./closest-index-to.ts";
+import { closestTo } from "./closest-to.ts";
 
 describe("closestTo", () => {
 	it("picks the candidate nearest to the target (PlainDate)", () => {

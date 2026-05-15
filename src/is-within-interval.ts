@@ -1,5 +1,5 @@
-import { type ComparableTemporal, compare } from "./compare";
-import type { Interval } from "./interval";
+import { type ComparableTemporal, compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
 
 /**
  * Returns `true` when `value` is within the interval, inclusive on both

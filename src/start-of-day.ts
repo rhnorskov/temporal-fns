@@ -1,4 +1,4 @@
-import type { TemporalWithTime } from "./temporal-types";
+import type { TemporalWithTime } from "./temporal-types.ts";
 
 /**
  * Returns `temporal` with the time portion zeroed (00:00:00.000000000).

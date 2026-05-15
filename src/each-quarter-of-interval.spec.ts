@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachQuarterOfInterval } from "./each-quarter-of-interval";
+import { eachQuarterOfInterval } from "./each-quarter-of-interval.ts";
 
 describe("eachQuarterOfInterval", () => {
 	it("returns the first day of each quarter in the interval", () => {

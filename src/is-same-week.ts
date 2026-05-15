@@ -1,6 +1,6 @@
-import type { DayOfWeek } from "./day-of-week";
-import { startOfWeek } from "./start-of-week";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import { startOfWeek } from "./start-of-week.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface IsSameWeekOptions {
 	/**

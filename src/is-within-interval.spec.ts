@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isWithinInterval } from "./is-within-interval";
+import { isWithinInterval } from "./is-within-interval.ts";
 
 const interval = {
 	start: Temporal.PlainDate.from("2024-02-10"),

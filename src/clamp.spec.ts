@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { clamp } from "./clamp";
+import { clamp } from "./clamp.ts";
 
 describe("clamp", () => {
 	const start = Temporal.PlainDate.from("2024-02-10");

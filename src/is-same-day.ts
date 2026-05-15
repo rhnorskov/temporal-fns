@@ -1,4 +1,4 @@
-import type { TemporalWithDate } from "./temporal-types";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns `true` when `a` and `b` share the same calendar date (year, month,

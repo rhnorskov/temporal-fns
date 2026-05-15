@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
-		"lib": ["ESNext.Temporal"],
+		"lib": ["esnext"],
+		"module": "nodenext",
+		"target": "esnext",
+		"moduleResolution": "nodenext",
+
 		"strict": true,
 		"allowUnusedLabels": false,
 		"allowUnreachableCode": false,
@@ -13,8 +17,15 @@
 		"noUnusedParameters": true,
 
 		"isolatedModules": true,
-
 		"esModuleInterop": true,
-		"skipLibCheck": true
-	}
+		"skipLibCheck": true,
+
+		"rewriteRelativeImportExtensions": true,
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+
+		"noEmit": true
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist"]
 }

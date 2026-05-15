@@ -1,7 +1,7 @@
-import { compare } from "./compare";
-import type { Interval } from "./interval";
-import { startOfMonth } from "./start-of-month";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
+import { startOfMonth } from "./start-of-month.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the first day of every month touched by the interval. Throws

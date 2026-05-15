@@ -1,4 +1,4 @@
-import type { TemporalWithDateTime } from "./temporal-types";
+import type { TemporalWithDateTime } from "./temporal-types.ts";
 
 /**
  * Returns `true` when `a` and `b` share the same wall-clock second (year,

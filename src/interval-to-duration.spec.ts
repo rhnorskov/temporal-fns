@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { intervalToDuration } from "./interval-to-duration";
+import { intervalToDuration } from "./interval-to-duration.ts";
 
 describe("intervalToDuration", () => {
 	it("returns a Duration for an Instant interval", () => {

@@ -1,4 +1,4 @@
-import type { TemporalWithDate } from "./temporal-types";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns `true` when `temporal` falls on tomorrow's calendar date. Does NOT

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { endOfWeek } from "./end-of-week";
+import { endOfWeek } from "./end-of-week.ts";
 
 describe("endOfWeek", () => {
 	it("returns the end of the week (Sunday) for a Temporal.PlainDate", () => {

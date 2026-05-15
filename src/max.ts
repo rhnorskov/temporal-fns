@@ -1,4 +1,4 @@
-import { type ComparableTemporal, compare } from "./compare";
+import { type ComparableTemporal, compare } from "./compare.ts";
 
 /**
  * Returns the latest value in `values`. Throws `RangeError` if `values` is

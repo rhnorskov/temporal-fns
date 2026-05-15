@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameYear } from "./is-same-year";
+import { isSameYear } from "./is-same-year.ts";
 
 describe("isSameYear", () => {
 	it("returns true for dates in the same year", () => {

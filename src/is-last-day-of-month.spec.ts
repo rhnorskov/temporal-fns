@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isLastDayOfMonth } from "./is-last-day-of-month";
+import { isLastDayOfMonth } from "./is-last-day-of-month.ts";
 
 describe("isLastDayOfMonth", () => {
 	it("returns true for the last day of a 29-day February", () => {

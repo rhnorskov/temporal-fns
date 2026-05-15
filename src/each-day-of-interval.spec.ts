@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachDayOfInterval } from "./each-day-of-interval";
+import { eachDayOfInterval } from "./each-day-of-interval.ts";
 
 describe("eachDayOfInterval", () => {
 	it("returns each day from start to end inclusive (PlainDate)", () => {

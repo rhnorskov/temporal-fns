@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toDate } from "./to-date";
+import { toDate } from "./to-date.ts";
 
 describe("toDate", () => {
 	it("converts Temporal.Instant to a Date object", () => {

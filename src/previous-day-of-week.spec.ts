@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { previousDayOfWeek } from "./previous-day-of-week";
+import { previousDayOfWeek } from "./previous-day-of-week.ts";
 
 describe("previousDayOfWeek", () => {
 	it("returns the previous Monday given various dates after the same", () => {

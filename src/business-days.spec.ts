@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { addBusinessDays } from "./add-business-days";
-import { differenceInBusinessDays } from "./difference-in-business-days";
-import { isBusinessDay } from "./is-business-day";
-import { subBusinessDays } from "./sub-business-days";
+import { addBusinessDays } from "./add-business-days.ts";
+import { differenceInBusinessDays } from "./difference-in-business-days.ts";
+import { isBusinessDay } from "./is-business-day.ts";
+import { subBusinessDays } from "./sub-business-days.ts";
 
 // Reference dates:
 // 2024-02-19 is a Monday

@@ -1,5 +1,5 @@
-import { endOfDay } from "./end-of-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { endOfDay } from "./end-of-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface EndOfQuarterOptions {
 	/**

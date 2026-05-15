@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isFirstDayOfMonth } from "./is-first-day-of-month";
+import { isFirstDayOfMonth } from "./is-first-day-of-month.ts";
 
 describe("isFirstDayOfMonth", () => {
 	it("returns true for day 1", () => {

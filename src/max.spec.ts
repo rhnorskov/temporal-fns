@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { max } from "./max";
+import { max } from "./max.ts";
 
 describe("max", () => {
 	it("returns the latest of a list of PlainDates", () => {

@@ -1,6 +1,6 @@
-import type { DayOfWeek } from "./day-of-week";
-import { endOfDay } from "./end-of-day";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import { endOfDay } from "./end-of-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface EndOfWeekOptions {
 	/**

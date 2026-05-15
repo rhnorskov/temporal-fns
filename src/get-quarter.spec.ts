@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getQuarter } from "./get-quarter";
+import { getQuarter } from "./get-quarter.ts";
 
 describe("getQuarter", () => {
 	it("returns 1 for January through March", () => {

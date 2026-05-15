@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { closestIndexTo } from "./closest-index-to";
+import { closestIndexTo } from "./closest-index-to.ts";
 
 describe("closestIndexTo", () => {
 	it("returns -1 for an empty candidates array", () => {

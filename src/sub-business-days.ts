@@ -1,6 +1,6 @@
-import { addBusinessDays } from "./add-business-days";
-import type { BusinessDayOptions } from "./is-business-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { addBusinessDays } from "./add-business-days.ts";
+import type { BusinessDayOptions } from "./is-business-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Subtracts `amount` business days from `temporal`. Equivalent to

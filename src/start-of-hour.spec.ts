@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { startOfHour } from "./start-of-hour";
+import { startOfHour } from "./start-of-hour.ts";
 
 describe("startOfHour", () => {
 	it("zeroes out sub-hour units for Temporal.PlainTime", () => {

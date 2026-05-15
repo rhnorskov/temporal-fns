@@ -1,6 +1,6 @@
-import type { DayOfWeek } from "./day-of-week";
-import { endOfMonth } from "./end-of-month";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import { endOfMonth } from "./end-of-month.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the last occurrence of `dayOfWeek` in the month of `temporal`

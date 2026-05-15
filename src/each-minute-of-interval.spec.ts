@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachMinuteOfInterval } from "./each-minute-of-interval";
+import { eachMinuteOfInterval } from "./each-minute-of-interval.ts";
 
 describe("eachMinuteOfInterval", () => {
 	it("returns the start of each minute in the interval", () => {

@@ -1,7 +1,7 @@
-import { compare } from "./compare";
-import type { Interval } from "./interval";
-import { startOfQuarter } from "./start-of-quarter";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
+import { startOfQuarter } from "./start-of-quarter.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the first day of every quarter touched by the interval. Throws

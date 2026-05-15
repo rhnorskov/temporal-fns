@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameSecond } from "./is-same-second";
+import { isSameSecond } from "./is-same-second.ts";
 
 describe("isSameSecond", () => {
 	it("returns true within the same second", () => {

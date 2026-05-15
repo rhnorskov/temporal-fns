@@ -1,4 +1,4 @@
-import type { ComparableTemporal } from "./compare";
+import type { ComparableTemporal } from "./compare.ts";
 
 /**
  * Returns the index of the candidate whose distance to `target` is smallest,
@@ -14,7 +14,9 @@ export function closestIndexTo<T extends ComparableTemporal>(
 
 	for (let i = 0; i < candidates.length; i++) {
 		const candidate = candidates[i];
-		if (candidate === undefined) continue;
+		if (candidate === undefined) {
+			continue;
+		}
 
 		const diff = absDiff(target, candidate);
 		if (bestDiff === null || diff < bestDiff) {

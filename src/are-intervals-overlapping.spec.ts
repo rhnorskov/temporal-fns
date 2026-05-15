@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { areIntervalsOverlapping } from "./are-intervals-overlapping";
+import { areIntervalsOverlapping } from "./are-intervals-overlapping.ts";
 
 const a = {
 	start: Temporal.PlainDate.from("2024-02-10"),

@@ -1,4 +1,4 @@
-import type { TemporalWithYearMonth } from "./temporal-types";
+import type { TemporalWithYearMonth } from "./temporal-types.ts";
 
 /**
  * Returns the quarter (1–4) of the year containing `temporal`.

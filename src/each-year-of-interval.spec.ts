@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachYearOfInterval } from "./each-year-of-interval";
+import { eachYearOfInterval } from "./each-year-of-interval.ts";
 
 describe("eachYearOfInterval", () => {
 	it("returns Jan 1 of each year in the interval", () => {

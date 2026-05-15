@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { firstDayOfWeekOfMonth } from "./first-day-of-week-of-month";
+import { firstDayOfWeekOfMonth } from "./first-day-of-week-of-month.ts";
 
 describe("firstDayOfWeekOfMonth", () => {
 	it("returns the first Monday of the month for a Temporal.PlainDate", () => {

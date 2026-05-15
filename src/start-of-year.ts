@@ -1,5 +1,5 @@
-import { startOfDay } from "./start-of-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { startOfDay } from "./start-of-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface StartOfYearOptions {
 	/**

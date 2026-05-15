@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachMonthOfInterval } from "./each-month-of-interval";
+import { eachMonthOfInterval } from "./each-month-of-interval.ts";
 
 describe("eachMonthOfInterval", () => {
 	it("returns the start of each month in the interval (PlainDate)", () => {

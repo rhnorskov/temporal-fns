@@ -1,7 +1,7 @@
-import { compare } from "./compare";
-import type { Interval } from "./interval";
-import { startOfYear } from "./start-of-year";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
+import { startOfYear } from "./start-of-year.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the first day of every year touched by the interval. Throws

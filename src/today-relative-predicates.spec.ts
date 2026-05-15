@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { isFuture } from "./is-future";
-import { isPast } from "./is-past";
-import { isToday } from "./is-today";
-import { isTomorrow } from "./is-tomorrow";
-import { isYesterday } from "./is-yesterday";
+import { isFuture } from "./is-future.ts";
+import { isPast } from "./is-past.ts";
+import { isToday } from "./is-today.ts";
+import { isTomorrow } from "./is-tomorrow.ts";
+import { isYesterday } from "./is-yesterday.ts";
 
 describe("isToday", () => {
 	it("returns true for the current PlainDate", () => {

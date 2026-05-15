@@ -1,6 +1,6 @@
-import { compare } from "./compare";
-import { type BusinessDayOptions, isBusinessDay } from "./is-business-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import { type BusinessDayOptions, isBusinessDay } from "./is-business-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Counts business days strictly between `earlier` and `later`: the start day

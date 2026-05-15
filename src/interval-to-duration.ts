@@ -1,4 +1,4 @@
-import type { Interval } from "./interval";
+import type { Interval } from "./interval.ts";
 
 type ContinuousTemporal =
 	| Temporal.Instant

@@ -1,4 +1,4 @@
-import type { TemporalWithTime } from "./temporal-types";
+import type { TemporalWithTime } from "./temporal-types.ts";
 
 /**
  * Returns `temporal` with minutes, seconds, and all sub-second fields zeroed.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameDay } from "./is-same-day";
+import { isSameDay } from "./is-same-day.ts";
 
 describe("isSameDay", () => {
 	it("returns true for two PlainDates on the same day", () => {

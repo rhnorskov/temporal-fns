@@ -1,5 +1,5 @@
-import type { DayOfWeek } from "./day-of-week";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface StartOfWeekOptions {
 	/**

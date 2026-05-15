@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { startOfDay } from "./start-of-day";
+import { startOfDay } from "./start-of-day.ts";
 
 describe("startOfDay", () => {
 	it("sets the time to 00:00:00.000000000 for Temporal.PlainTime", () => {

@@ -1,7 +1,7 @@
-import { compare } from "./compare";
-import type { Interval } from "./interval";
-import { startOfHour } from "./start-of-hour";
-import type { TemporalWithDateTime } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { Interval } from "./interval.ts";
+import { startOfHour } from "./start-of-hour.ts";
+import type { TemporalWithDateTime } from "./temporal-types.ts";
 
 /**
  * Returns every hour in the inclusive interval. The first element is snapped

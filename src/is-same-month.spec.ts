@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameMonth } from "./is-same-month";
+import { isSameMonth } from "./is-same-month.ts";
 
 describe("isSameMonth", () => {
 	it("returns true for dates in the same month", () => {

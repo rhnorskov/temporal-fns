@@ -1,8 +1,8 @@
-import { compare } from "./compare";
-import type { DayOfWeek } from "./day-of-week";
-import type { Interval } from "./interval";
-import { startOfWeek } from "./start-of-week";
-import type { TemporalWithDate } from "./temporal-types";
+import { compare } from "./compare.ts";
+import type { DayOfWeek } from "./day-of-week.ts";
+import type { Interval } from "./interval.ts";
+import { startOfWeek } from "./start-of-week.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 export interface EachWeekOfIntervalOptions {
 	/**

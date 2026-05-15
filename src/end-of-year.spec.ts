@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { endOfYear } from "./end-of-year";
+import { endOfYear } from "./end-of-year.ts";
 
 describe("endOfYear", () => {
 	it("returns December 31 for Temporal.PlainDate", () => {

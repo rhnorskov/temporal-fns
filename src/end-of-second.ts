@@ -1,4 +1,4 @@
-import type { TemporalWithTime } from "./temporal-types";
+import type { TemporalWithTime } from "./temporal-types.ts";
 
 /**
  * Returns `temporal` at the last representable instant of its current second

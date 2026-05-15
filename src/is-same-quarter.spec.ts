@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isSameQuarter } from "./is-same-quarter";
+import { isSameQuarter } from "./is-same-quarter.ts";
 
 describe("isSameQuarter", () => {
 	it("returns true for dates in the same quarter", () => {

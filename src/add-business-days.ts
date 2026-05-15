@@ -1,5 +1,5 @@
-import { type BusinessDayOptions, isBusinessDay } from "./is-business-day";
-import type { TemporalWithDate } from "./temporal-types";
+import { type BusinessDayOptions, isBusinessDay } from "./is-business-day.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Adds `amount` business days to `temporal`, skipping weekends (and, if

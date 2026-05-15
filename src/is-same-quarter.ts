@@ -1,5 +1,5 @@
-import { getQuarter } from "./get-quarter";
-import type { TemporalWithYearMonth } from "./temporal-types";
+import { getQuarter } from "./get-quarter.ts";
+import type { TemporalWithYearMonth } from "./temporal-types.ts";
 
 /**
  * Returns `true` when `a` and `b` fall in the same quarter of the same year.

@@ -1,6 +1,6 @@
-import type { DayOfWeek } from "./day-of-week";
-import { startOfMonth } from "./start-of-month";
-import type { TemporalWithDate } from "./temporal-types";
+import type { DayOfWeek } from "./day-of-week.ts";
+import { startOfMonth } from "./start-of-month.ts";
+import type { TemporalWithDate } from "./temporal-types.ts";
 
 /**
  * Returns the first occurrence of `dayOfWeek` in the month of `temporal`

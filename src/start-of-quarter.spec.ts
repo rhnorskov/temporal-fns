@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { startOfQuarter } from "./start-of-quarter";
+import { startOfQuarter } from "./start-of-quarter.ts";
 
 describe("startOfQuarter", () => {
 	it("returns Jan 1 for a date in Q1", () => {

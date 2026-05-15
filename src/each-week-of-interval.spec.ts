@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { eachWeekOfInterval } from "./each-week-of-interval";
+import { eachWeekOfInterval } from "./each-week-of-interval.ts";
 
 describe("eachWeekOfInterval", () => {
 	it("returns the Monday of each week in the interval", () => {

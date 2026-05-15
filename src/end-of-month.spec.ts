@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { endOfMonth } from "./end-of-month";
+import { endOfMonth } from "./end-of-month.ts";
 
 describe("endOfMonth", () => {
 	it("returns the last day of the month for a Temporal.PlainDate", () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { min } from "./min";
+import { min } from "./min.ts";
 
 describe("min", () => {
 	it("returns the earliest of a list of PlainDates", () => {
