@@ -1,6 +1,6 @@
 # temporal-fns
 
-A utility library for working with [Temporal](https://tc39.es/proposal-temporal/) dates and times, providing helper functions for common date and time manipulations.
+A utility library for working with [Temporal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) dates and times, providing helper functions for common date and time manipulations.
 
 ## Installation
 
