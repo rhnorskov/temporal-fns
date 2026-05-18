@@ -37,7 +37,8 @@ eachDayOfInterval({ start: today, end: today.add({ days: 6 }) });
 - `startOfHour` / `endOfHour`
 - `startOfMinute` / `endOfMinute`
 - `startOfSecond` / `endOfSecond`
-- `startOfWeek` / `endOfWeek` — accepts `{ weekStartsOn?, preserveTime? }`. Default is Monday-start (ISO). `endOfWeek` snaps to end-of-day for time-bearing inputs unless `preserveTime: true`.
+- `startOfWeek` / `endOfWeek` — accepts `{ weekStartsOn?, preserveTime? }`. Default is Monday-start (ISO).
+  `endOfWeek` snaps to end-of-day for time-bearing inputs unless `preserveTime: true`.
 - `startOfMonth` / `endOfMonth` — accepts `{ preserveTime }`
 - `startOfQuarter` / `endOfQuarter` — accepts `{ preserveTime }`
 - `startOfYear` / `endOfYear` — accepts `{ preserveTime }`
