@@ -38,13 +38,15 @@
 		"check:fix": "biome check --write",
 		"release": "changeset publish",
 		"type-check": "tsc --noEmit",
-		"test": "vitest"
+		"test": "vitest",
+		"docs": "typedoc"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.15",
 		"@changesets/cli": "^2.31.0",
 		"@types/node": "^25.0.0",
 		"tsdown": "^0.22.0",
+		"typedoc": "^0.28.19",
 		"typescript": "^6.0.3",
 		"vitest": "^4.1.6"
 	}

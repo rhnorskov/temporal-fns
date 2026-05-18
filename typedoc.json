@@ -1,0 +1,12 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["src/index.ts"],
+	"out": "docs",
+	"name": "temporal-fns",
+	"readme": "README.md",
+	"githubPages": true,
+	"navigationLinks": {
+		"GitHub": "https://github.com/rhnorskov/temporal-fns",
+		"npm": "https://www.npmjs.com/package/temporal-fns"
+	}
+}
