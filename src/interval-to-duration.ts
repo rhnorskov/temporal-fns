@@ -25,11 +25,15 @@ export function intervalToDuration(
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.ZonedDateTime>,
-	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<
+		Temporal.DateUnit | Temporal.TimeUnit
+	>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.PlainDateTime>,
-	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<
+		Temporal.DateUnit | Temporal.TimeUnit
+	>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.PlainDate>,
@@ -41,7 +45,9 @@ export function intervalToDuration(
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<ContinuousTemporal>,
-	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<
+		Temporal.DateUnit | Temporal.TimeUnit
+	>,
 ): Temporal.Duration {
 	const { start, end } = interval;
 
