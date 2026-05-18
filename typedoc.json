@@ -5,6 +5,7 @@
 	"name": "temporal-fns",
 	"readme": "README.md",
 	"githubPages": true,
+	"cname": "temporal-fns.js.org",
 	"navigationLinks": {
 		"GitHub": "https://github.com/rhnorskov/temporal-fns",
 		"npm": "https://www.npmjs.com/package/temporal-fns"

@@ -7,9 +7,6 @@ type ContinuousTemporal =
 	| Temporal.PlainTime
 	| Temporal.ZonedDateTime;
 
-type Options<U extends Temporal.DateUnit | Temporal.TimeUnit> =
-	Temporal.RoundingOptionsWithLargestUnit<U>;
-
 /**
  * Returns the `Duration` from `interval.start` to `interval.end`.
  *
@@ -24,34 +21,34 @@ type Options<U extends Temporal.DateUnit | Temporal.TimeUnit> =
  */
 export function intervalToDuration(
 	interval: Interval<Temporal.Instant>,
-	options?: Options<Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.TimeUnit>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.ZonedDateTime>,
-	options?: Options<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.PlainDateTime>,
-	options?: Options<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.PlainDate>,
-	options?: Options<Temporal.DateUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<Temporal.PlainTime>,
-	options?: Options<Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.TimeUnit>,
 ): Temporal.Duration;
 export function intervalToDuration(
 	interval: Interval<ContinuousTemporal>,
-	options?: Options<Temporal.DateUnit | Temporal.TimeUnit>,
+	options?: Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit | Temporal.TimeUnit>,
 ): Temporal.Duration {
 	const { start, end } = interval;
 
 	if (start instanceof Temporal.Instant) {
 		return start.until(end as Temporal.Instant, {
 			largestUnit: "hour",
-			...(options as Options<Temporal.TimeUnit>),
+			...(options as Temporal.RoundingOptionsWithLargestUnit<Temporal.TimeUnit>),
 		});
 	}
 	if (start instanceof Temporal.ZonedDateTime) {
@@ -69,11 +66,11 @@ export function intervalToDuration(
 	if (start instanceof Temporal.PlainDate) {
 		return start.until(end as Temporal.PlainDate, {
 			largestUnit: "year",
-			...(options as Options<Temporal.DateUnit>),
+			...(options as Temporal.RoundingOptionsWithLargestUnit<Temporal.DateUnit>),
 		});
 	}
 	return start.until(end as Temporal.PlainTime, {
 		largestUnit: "hour",
-		...(options as Options<Temporal.TimeUnit>),
+		...(options as Temporal.RoundingOptionsWithLargestUnit<Temporal.TimeUnit>),
 	});
 }
